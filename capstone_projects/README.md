@@ -24,7 +24,6 @@ Amazon CloudWatch is a monitoring and management service that provides data and 
 
 1. In the CloudWatch console, select "Alarms" from the left navigation pane.
 2. Click on the "Create Alarm" button.
-3. 
 
 ![My Image](./images/Screenshot%202024-07-06%20135255.png)
 
@@ -32,32 +31,60 @@ Amazon CloudWatch is a monitoring and management service that provides data and 
 
 #### Step 3: Choose EC2 Metrics
 
-Under "Create Alarm," select "EC2" from the list of metrics.
-Click on the "Per-Instance Metrics" tab.
-Search and Choose your desired EC2 instance from the list.
+1. Click on select metric and selct EC2 from the list of metrics.
+2. Click on the "Per-Instance Metrics" tab.
+3. Search and Choose your desired EC2 instance from the list using the EC2 instance id.
 
+![My Image](./images/Screenshot%202024-07-06%20135340.png)
 
+![My Image](./images/Screenshot%202024-07-06%20135405.png)
+
+![My Image](./images/Screenshot%202024-07-07%20050117.png)
 
 #### Step 4: Define the Alarm Condition
 
-Under the "Select metric" dropdown, choose "Per-Instance Metrics."
-Select "CPUUtilization" from the list of metrics.
-Specify the conditions for the alarm. For example, set the threshold to trigger the alarm when the CPU utilization exceeds 10% for  consecutive periods of 1 minutes.
+1. Select "CPUUtilization" from the list of metrics.
+2. Specify the conditions for the alarm. For example, set the threshold to trigger the alarm when the CPU utilization exceeds 50% for  consecutive periods of 1 minutes.
+
+![My Image](./images/Screenshot%202024-07-07%20050315.png)
+
+![My Image](./images/Screenshot%202024-07-07%20050535.png)
 
 #### Step 5: Define the Actions
 
-Under the "Whenever this alarm state is" section, select the specific state (e.g., "In Alarm").
-Choose an existing SNS topic or create a new one to receive notifications when the alarm state changes.
+1. Under the "Whenever this alarm state is" section, select the specific state (e.g., "In Alarm").
+2. Choose an existing SNS topic or create a new one to receive notifications when the alarm state changes.
+
+![My Image](./images/Screenshot%202024-07-07%20050758.png)
 
 #### Step 6: Name and Create the Alarm
 
-Provide a descriptive name and description for the alarm.
-Click on the "Create alarm" button to finalize and create the CloudWatch alarm.
+Provide a descriptive name and description for the alarm and click on next
+In the preview and create page, click on the "Create alarm" button to finalize and create the CloudWatch alarm.
+![My Image](./images/Screenshot%202024-07-07%20052239.png)
 
-#### Step 7: Verification
+![alt text](<./images/Screenshot 2024-07-07 052716.png>)
 
-Once the alarm is created, navigate to the "Alarms" section in the CloudWatch console to verify that the new alarm for CPU utilization is active.
-Conclusion:
-In this guide, you have learned how to create a CloudWatch alarm to monitor the CPU utilization of an EC2 instance. By setting up this alarm, you can proactively monitor the performance of your EC2 instances and take necessary actions to maintain optimal operational efficiency.
+#### Step 7: Test the Cloudwach alarm
 
-Note: Regularly review and adjust your CloudWatch alarm settings based on the specific needs and performance characteristics of your EC2 instances.
+1. ssh into the specific EC2 instance and install stress on it for the test.
+2. Carry out the stress test using the command below. (--cpu and -timeout indicates the number of cpu and the time length of the test)
+
+![My Image](./images/Screenshot%202024-07-06%20143325.png)
+
+The image below shows the email sent when the alarm was triggered
+
+![My Image](./images/Screenshot%202024-07-06%20143301.png)
+
+## 2. How to Create a Cloudwatch Dashboard
+
+1. Click on dashboard on the side bar.
+2. Click on create dashboard and give it your desired name.
+3. Click on the desired type of dashboard
+4. Search for the resource e.g EC2 instance and select the desired metrics to be measured e.g CPUUtilization.
+
+![My Image](./images/Screenshot%202024-07-07%20053602.png)
+
+![My Image](./images/Screenshot%202024-07-07%20053639.png)
+
+![My Image](./images/Screenshot%202024-07-07%20054139.png)
